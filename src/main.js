@@ -1,5 +1,5 @@
-import { fetchImages } from "./pixabay-api.js";
-import { renderGallery, clearGallery } from "./render-functions.js";
+import { fetchImages } from "./js/pixabay-api.js";
+import { renderGallery, clearGallery } from "./js/render-functions.js";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
@@ -47,3 +47,7 @@ form.addEventListener("submit", (event) => {
       loader.style.display = "none"; 
     });
 });
+
+
+
+
