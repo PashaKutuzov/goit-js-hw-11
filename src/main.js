@@ -5,15 +5,23 @@ import "izitoast/dist/css/iziToast.min.css";
 
 const form = document.querySelector(".search-form");
 const gallery = document.querySelector(".card-list");
-const loader = document.createElement("div");
-loader.className = "loader";
-document.body.appendChild(loader);
 
+
+const loader = document.createElement("p");
+loader.textContent = "Loading...";
+loader.style.display = "none";
+loader.style.fontSize = "16px";
+loader.style.fontWeight = "bold";
+loader.style.textAlign = "center";
+loader.style.marginTop = "10px";
+
+
+form.insertAdjacentElement("afterend", loader)
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const query = event.target.elements.query.value.trim(); 
+  const query = event.target.elements.query.value.trim();
 
   if (!query) {
     iziToast.warning({
@@ -23,8 +31,8 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  clearGallery(); 
-  loader.style.display = "block";
+  clearGallery();
+  loader.style.display = "block"; 
 
   fetchImages(query)
     .then((images) => {
@@ -44,10 +52,7 @@ form.addEventListener("submit", (event) => {
       });
     })
     .finally(() => {
-      loader.style.display = "none"; 
+      loader.style.display = "none"; // Ховаємо "Loading..."
     });
 });
-
-
-
 
